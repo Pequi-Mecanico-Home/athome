@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ros_master:
+    container_name: ros_master
+    image: ros:noetic-ros-core
+    command: roscore
+    tty: true
+    restart: always
+    environment:
+      - ROS_MASTER_URI=http://ros_master:11311
+      - ROS_HOSTNAME=ros_master
+    networks:
+      - athome-net
+
+networks:
+  athome-net:
+    name: athome-net
+    driver: bridge
